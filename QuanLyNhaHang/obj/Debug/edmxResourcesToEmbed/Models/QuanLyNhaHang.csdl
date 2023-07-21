@@ -1,0 +1,945 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanLyNhaHangModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Ban">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IdTableType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdKhuVuc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdTinhTrang" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="KhuVuc" Relationship="Self.FK__Ban__IdKhuVuc__4AB81AF0" FromRole="Ban" ToRole="KhuVuc" />
+    <NavigationProperty Name="TableType" Relationship="Self.FK__Ban__IdTableType__49C3F6B7" FromRole="Ban" ToRole="TableType" />
+    <NavigationProperty Name="TinhTrang" Relationship="Self.FK__Ban__IdTinhTrang__4BAC3F29" FromRole="Ban" ToRole="TinhTrang" />
+    <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__IdBan__76969D2E" FromRole="Ban" ToRole="HoaDon" />
+  </EntityType>
+  <EntityType Name="Ca">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGianBatDau" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="ThoiGianKetThuc" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__IdCa__787EE5A0" FromRole="Ca" ToRole="HoaDon" />
+    <NavigationProperty Name="HuyMons" Relationship="Self.FK__HuyMon__IdCa__66603565" FromRole="Ca" ToRole="HuyMon" />
+    <NavigationProperty Name="LuuKhuyenMais" Relationship="Self.FK__LuuKhuyenM__IdCa__151B244E" FromRole="Ca" ToRole="LuuKhuyenMai" />
+  </EntityType>
+  <EntityType Name="ChiTietHoaDon">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdHoaDon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdMon" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Quantity" Type="Double" Nullable="false" />
+    <Property Name="PriceBan" Type="Double" Nullable="false" />
+    <Property Name="Amount" Type="Double" Nullable="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="HoaDon" Relationship="Self.FK__ChiTietHo__IdHoa__01142BA1" FromRole="ChiTietHoaDon" ToRole="HoaDon" />
+    <NavigationProperty Name="Mon" Relationship="Self.FK__ChiTietHo__IdMon__02084FDA" FromRole="ChiTietHoaDon" ToRole="Mon" />
+  </EntityType>
+  <EntityType Name="ChiTietHoaDonTemp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdHoaDon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdMon" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Quantity" Type="Double" Nullable="false" />
+    <Property Name="QuantityTemp" Type="Double" Nullable="false" />
+    <Property Name="PriceBan" Type="Double" Nullable="false" />
+    <Property Name="Amount" Type="Double" Nullable="false" />
+    <Property Name="isGift" Type="Int32" Nullable="false" />
+    <Property Name="CachThucKhuyenMai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HoaDon" Relationship="Self.FK__ChiTietHo__IdHoa__04E4BC85" FromRole="ChiTietHoaDonTemp" ToRole="HoaDon" />
+    <NavigationProperty Name="Mon" Relationship="Self.FK__ChiTietHo__IdMon__05D8E0BE" FromRole="ChiTietHoaDonTemp" ToRole="Mon" />
+  </EntityType>
+  <EntityType Name="ChiTietPhieuNhap">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPhieuNhapKho" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdMon" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="PriceInput" Type="Double" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Ngay" Type="DateTime" Precision="3" />
+    <Property Name="Gio" Type="Time" Precision="7" />
+    <NavigationProperty Name="Mon" Relationship="Self.FK__ChiTietPh__IdMon__72C60C4A" FromRole="ChiTietPhieuNhap" ToRole="Mon" />
+    <NavigationProperty Name="PhieuNhapKho" Relationship="Self.FK__ChiTietPh__IdPhi__71D1E811" FromRole="ChiTietPhieuNhap" ToRole="PhieuNhapKho" />
+  </EntityType>
+  <EntityType Name="DanhMuc">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ChoPhepNhapKho" Type="Boolean" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Mons" Relationship="Self.FK__Mon__IdDanhMuc__5FB337D6" FromRole="DanhMuc" ToRole="Mon" />
+  </EntityType>
+  <EntityType Name="Feature">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="HoaDon">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdBan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IdCa" Type="Int32" Nullable="false" />
+    <Property Name="Ngay" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="GioVao" Type="Time" Precision="7" />
+    <Property Name="GioRa" Type="Time" Precision="7" />
+    <Property Name="PhuThu" Type="Int32" />
+    <Property Name="GhiChuPhuThu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GiamGiaTheoPhanTram" Type="Int32" />
+    <Property Name="GiamGiaTheoTien" Type="Int32" />
+    <Property Name="SoTienKhachDua" Type="Int32" />
+    <Property Name="SoTienTraLai" Type="Int32" />
+    <Property Name="GhiChuKhachHang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ThanhTien" Type="Int32" />
+    <Property Name="TienNo" Type="Int32" />
+    <Property Name="ThanhTienThucThu" Type="Int32" />
+    <Property Name="IdUser" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="LanIn" Type="Int32" />
+    <Property Name="TinhTrangGiaoCa" Type="Int32" />
+    <Property Name="MaLSBGC" Type="Int32" />
+    <NavigationProperty Name="Ban" Relationship="Self.FK__HoaDon__IdBan__76969D2E" FromRole="HoaDon" ToRole="Ban" />
+    <NavigationProperty Name="Ca" Relationship="Self.FK__HoaDon__IdCa__787EE5A0" FromRole="HoaDon" ToRole="Ca" />
+    <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK__ChiTietHo__IdHoa__01142BA1" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
+    <NavigationProperty Name="ChiTietHoaDonTemps" Relationship="Self.FK__ChiTietHo__IdHoa__04E4BC85" FromRole="HoaDon" ToRole="ChiTietHoaDonTemp" />
+    <NavigationProperty Name="User" Relationship="Self.FK__HoaDon__IdUser__778AC167" FromRole="HoaDon" ToRole="Users" />
+    <NavigationProperty Name="LichSuHoaDonThanhToans" Relationship="Self.FK__LichSuHoa__IdHoa__7C4F7684" FromRole="HoaDon" ToRole="LichSuHoaDonThanhToan" />
+    <NavigationProperty Name="LuuKhuyenMais" Relationship="Self.FK__LuuKhuyen__IdHoa__123EB7A3" FromRole="HoaDon" ToRole="LuuKhuyenMai" />
+  </EntityType>
+  <EntityType Name="HuyMon">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdMon" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdUser" Type="Int32" Nullable="false" />
+    <Property Name="IdLiDo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ngay" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Gio" Type="Time" Precision="7" />
+    <Property Name="IdCa" Type="Int32" Nullable="false" />
+    <Property Name="TinhTrangGiaoCa" Type="Int32" />
+    <Property Name="MaLSBGC" Type="Int32" />
+    <NavigationProperty Name="Ca" Relationship="Self.FK__HuyMon__IdCa__66603565" FromRole="HuyMon" ToRole="Ca" />
+    <NavigationProperty Name="LiDo" Relationship="Self.FK__HuyMon__IdLiDo__656C112C" FromRole="HuyMon" ToRole="LiDo" />
+    <NavigationProperty Name="Mon" Relationship="Self.FK__HuyMon__IdMon__6383C8BA" FromRole="HuyMon" ToRole="Mon" />
+    <NavigationProperty Name="User" Relationship="Self.FK__HuyMon__IdUser__6477ECF3" FromRole="HuyMon" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Info">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Kho">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdMon" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SoLuongDauKi" Type="Int32" />
+    <Property Name="SoLuongNhapMoi" Type="Int32" />
+    <Property Name="SoLuongTon" Type="Int32" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Mon" Relationship="Self.FK__Kho__IdMon__6B24EA82" FromRole="Kho" ToRole="Mon" />
+  </EntityType>
+  <EntityType Name="KhuVuc">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Color" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Bans" Relationship="Self.FK__Ban__IdKhuVuc__4AB81AF0" FromRole="KhuVuc" ToRole="Ban" />
+  </EntityType>
+  <EntityType Name="KhuyenMai">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuongMua" Type="Int32" Nullable="false" />
+    <Property Name="SoLuongKM" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SanPhamKhuyenMais" Relationship="Self.FK__SanPhamKh__IdKhu__0D7A0286" FromRole="KhuyenMai" ToRole="SanPhamKhuyenMai" />
+  </EntityType>
+  <EntityType Name="LichSuBanGiaoCa">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ThoiGianTu" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ThoiGianDen" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CaGiao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CaNhan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TienTiepNhanCaTruoc" Type="Int32" Nullable="false" />
+    <Property Name="TienHoaDon" Type="Int32" Nullable="false" />
+    <Property Name="TienPhieuThu" Type="Int32" Nullable="false" />
+    <Property Name="TienPhieuChi" Type="Int32" Nullable="false" />
+    <Property Name="TienThucThuCa" Type="Int32" Nullable="false" />
+    <Property Name="TienGiaoQuanLy" Type="Int32" Nullable="false" />
+    <Property Name="TienGiaoCa" Type="Int32" Nullable="false" />
+    <Property Name="TienThucTeGiaoCa" Type="Int32" Nullable="false" />
+    <Property Name="TienChenhLech" Type="Int32" Nullable="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="LichSuHoaDonThanhToan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdHoaDon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SoTienNo" Type="Int32" />
+    <Property Name="SoTienTra" Type="Int32" />
+    <Property Name="SoTienConLai" Type="Int32" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Ngay" Type="DateTime" Precision="3" />
+    <Property Name="Gio" Type="Time" Precision="7" />
+    <NavigationProperty Name="HoaDon" Relationship="Self.FK__LichSuHoa__IdHoa__7C4F7684" FromRole="LichSuHoaDonThanhToan" ToRole="HoaDon" />
+  </EntityType>
+  <EntityType Name="LiDo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="HuyMons" Relationship="Self.FK__HuyMon__IdLiDo__656C112C" FromRole="LiDo" ToRole="HuyMon" />
+  </EntityType>
+  <EntityType Name="LuuKhuyenMai">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdHoaDon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdMon" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdUser" Type="Int32" Nullable="false" />
+    <Property Name="IdCa" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isGift" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Ca" Relationship="Self.FK__LuuKhuyenM__IdCa__151B244E" FromRole="LuuKhuyenMai" ToRole="Ca" />
+    <NavigationProperty Name="HoaDon" Relationship="Self.FK__LuuKhuyen__IdHoa__123EB7A3" FromRole="LuuKhuyenMai" ToRole="HoaDon" />
+    <NavigationProperty Name="Mon" Relationship="Self.FK__LuuKhuyen__IdMon__1332DBDC" FromRole="LuuKhuyenMai" ToRole="Mon" />
+    <NavigationProperty Name="User" Relationship="Self.FK__LuuKhuyen__IdUse__14270015" FromRole="LuuKhuyenMai" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="MayIn">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Mons" Relationship="Self.FK__Mon__IdMayIn__60A75C0F" FromRole="MayIn" ToRole="Mon" />
+  </EntityType>
+  <EntityType Name="Mon">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="PriceInput" Type="Double" />
+    <Property Name="IdDanhMuc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IdUnit" Type="Int32" Nullable="false" />
+    <Property Name="IdMayIn" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK__ChiTietHo__IdMon__02084FDA" FromRole="Mon" ToRole="ChiTietHoaDon" />
+    <NavigationProperty Name="ChiTietHoaDonTemps" Relationship="Self.FK__ChiTietHo__IdMon__05D8E0BE" FromRole="Mon" ToRole="ChiTietHoaDonTemp" />
+    <NavigationProperty Name="ChiTietPhieuNhaps" Relationship="Self.FK__ChiTietPh__IdMon__72C60C4A" FromRole="Mon" ToRole="ChiTietPhieuNhap" />
+    <NavigationProperty Name="DanhMuc" Relationship="Self.FK__Mon__IdDanhMuc__5FB337D6" FromRole="Mon" ToRole="DanhMuc" />
+    <NavigationProperty Name="HuyMons" Relationship="Self.FK__HuyMon__IdMon__6383C8BA" FromRole="Mon" ToRole="HuyMon" />
+    <NavigationProperty Name="Khoes" Relationship="Self.FK__Kho__IdMon__6B24EA82" FromRole="Mon" ToRole="Kho" />
+    <NavigationProperty Name="LuuKhuyenMais" Relationship="Self.FK__LuuKhuyen__IdMon__1332DBDC" FromRole="Mon" ToRole="LuuKhuyenMai" />
+    <NavigationProperty Name="MayIn" Relationship="Self.FK__Mon__IdMayIn__60A75C0F" FromRole="Mon" ToRole="MayIn" />
+    <NavigationProperty Name="Unit" Relationship="Self.FK__Mon__IdUnit__5EBF139D" FromRole="Mon" ToRole="Unit" />
+    <NavigationProperty Name="SanPhamKhuyenMais" Relationship="Self.FK__SanPhamKh__IdMon__0C85DE4D" FromRole="Mon" ToRole="SanPhamKhuyenMai" />
+  </EntityType>
+  <EntityType Name="PhieuNhapKho">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdUser" Type="Int32" Nullable="false" />
+    <Property Name="Ngay" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ChiTietPhieuNhaps" Relationship="Self.FK__ChiTietPh__IdPhi__71D1E811" FromRole="PhieuNhapKho" ToRole="ChiTietPhieuNhap" />
+    <NavigationProperty Name="User" Relationship="Self.FK__PhieuNhap__IdUse__6E01572D" FromRole="PhieuNhapKho" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK__UserRole__IdRole__32E0915F" FromRole="Role" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="SanPhamKhuyenMai">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdMon" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdKhuyenMai" Type="Int32" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="dateBatDau" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="timeBatDau" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="dateKetThuc" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="timeKetThuc" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="KhuyenMai" Relationship="Self.FK__SanPhamKh__IdKhu__0D7A0286" FromRole="SanPhamKhuyenMai" ToRole="KhuyenMai" />
+    <NavigationProperty Name="Mon" Relationship="Self.FK__SanPhamKh__IdMon__0C85DE4D" FromRole="SanPhamKhuyenMai" ToRole="Mon" />
+  </EntityType>
+  <EntityType Name="TableType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Bans" Relationship="Self.FK__Ban__IdTableType__49C3F6B7" FromRole="TableType" ToRole="Ban" />
+  </EntityType>
+  <EntityType Name="TinhTrang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BackgroundColor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Color" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Bans" Relationship="Self.FK__Ban__IdTinhTrang__4BAC3F29" FromRole="TinhTrang" ToRole="Ban" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="NewName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Mons" Relationship="Self.FK__Mon__IdUnit__5EBF139D" FromRole="Unit" ToRole="Mon" />
+  </EntityType>
+  <EntityType Name="UserFeature">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUser" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Self.FK__UserFeatu__IdUse__3B75D760" FromRole="UserFeature" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUser" Type="Int32" Nullable="false" />
+    <Property Name="IdRole" Type="Int32" Nullable="false" />
+    <Property Name="MaGiamSat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Role" Relationship="Self.FK__UserRole__IdRole__32E0915F" FromRole="UserRole" ToRole="Role" />
+    <NavigationProperty Name="User" Relationship="Self.FK__UserRole__IdUser__31EC6D26" FromRole="UserRole" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CMND" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__IdUser__778AC167" FromRole="Users" ToRole="HoaDon" />
+    <NavigationProperty Name="HuyMons" Relationship="Self.FK__HuyMon__IdUser__6477ECF3" FromRole="Users" ToRole="HuyMon" />
+    <NavigationProperty Name="LuuKhuyenMais" Relationship="Self.FK__LuuKhuyen__IdUse__14270015" FromRole="Users" ToRole="LuuKhuyenMai" />
+    <NavigationProperty Name="PhieuNhapKhoes" Relationship="Self.FK__PhieuNhap__IdUse__6E01572D" FromRole="Users" ToRole="PhieuNhapKho" />
+    <NavigationProperty Name="UserFeatures" Relationship="Self.FK__UserFeatu__IdUse__3B75D760" FromRole="Users" ToRole="UserFeature" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK__UserRole__IdUser__31EC6D26" FromRole="Users" ToRole="UserRole" />
+  </EntityType>
+  <Association Name="FK__Ban__IdKhuVuc__4AB81AF0">
+    <End Role="KhuVuc" Type="Self.KhuVuc" Multiplicity="1" />
+    <End Role="Ban" Type="Self.Ban" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhuVuc">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ban">
+        <PropertyRef Name="IdKhuVuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ban__IdTableType__49C3F6B7">
+    <End Role="TableType" Type="Self.TableType" Multiplicity="1" />
+    <End Role="Ban" Type="Self.Ban" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TableType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ban">
+        <PropertyRef Name="IdTableType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ban__IdTinhTrang__4BAC3F29">
+    <End Role="TinhTrang" Type="Self.TinhTrang" Multiplicity="1" />
+    <End Role="Ban" Type="Self.Ban" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TinhTrang">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ban">
+        <PropertyRef Name="IdTinhTrang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__IdBan__76969D2E">
+    <End Role="Ban" Type="Self.Ban" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ban">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="IdBan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__IdCa__787EE5A0">
+    <End Role="Ca" Type="Self.Ca" Multiplicity="1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ca">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="IdCa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HuyMon__IdCa__66603565">
+    <End Role="Ca" Type="Self.Ca" Multiplicity="1" />
+    <End Role="HuyMon" Type="Self.HuyMon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ca">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HuyMon">
+        <PropertyRef Name="IdCa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LuuKhuyenM__IdCa__151B244E">
+    <End Role="Ca" Type="Self.Ca" Multiplicity="1" />
+    <End Role="LuuKhuyenMai" Type="Self.LuuKhuyenMai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ca">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LuuKhuyenMai">
+        <PropertyRef Name="IdCa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietHo__IdHoa__01142BA1">
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+    <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChiTietHoaDon">
+        <PropertyRef Name="IdHoaDon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietHo__IdMon__02084FDA">
+    <End Role="Mon" Type="Self.Mon" Multiplicity="1" />
+    <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChiTietHoaDon">
+        <PropertyRef Name="IdMon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietHo__IdHoa__04E4BC85">
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+    <End Role="ChiTietHoaDonTemp" Type="Self.ChiTietHoaDonTemp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChiTietHoaDonTemp">
+        <PropertyRef Name="IdHoaDon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietHo__IdMon__05D8E0BE">
+    <End Role="Mon" Type="Self.Mon" Multiplicity="1" />
+    <End Role="ChiTietHoaDonTemp" Type="Self.ChiTietHoaDonTemp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChiTietHoaDonTemp">
+        <PropertyRef Name="IdMon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietPh__IdMon__72C60C4A">
+    <End Role="Mon" Type="Self.Mon" Multiplicity="1" />
+    <End Role="ChiTietPhieuNhap" Type="Self.ChiTietPhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChiTietPhieuNhap">
+        <PropertyRef Name="IdMon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietPh__IdPhi__71D1E811">
+    <End Role="PhieuNhapKho" Type="Self.PhieuNhapKho" Multiplicity="1" />
+    <End Role="ChiTietPhieuNhap" Type="Self.ChiTietPhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuNhapKho">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChiTietPhieuNhap">
+        <PropertyRef Name="IdPhieuNhapKho" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Mon__IdDanhMuc__5FB337D6">
+    <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="0..1" />
+    <End Role="Mon" Type="Self.Mon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DanhMuc">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mon">
+        <PropertyRef Name="IdDanhMuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__IdUser__778AC167">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichSuHoa__IdHoa__7C4F7684">
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+    <End Role="LichSuHoaDonThanhToan" Type="Self.LichSuHoaDonThanhToan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LichSuHoaDonThanhToan">
+        <PropertyRef Name="IdHoaDon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LuuKhuyen__IdHoa__123EB7A3">
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+    <End Role="LuuKhuyenMai" Type="Self.LuuKhuyenMai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LuuKhuyenMai">
+        <PropertyRef Name="IdHoaDon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HuyMon__IdLiDo__656C112C">
+    <End Role="LiDo" Type="Self.LiDo" Multiplicity="1" />
+    <End Role="HuyMon" Type="Self.HuyMon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LiDo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HuyMon">
+        <PropertyRef Name="IdLiDo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HuyMon__IdMon__6383C8BA">
+    <End Role="Mon" Type="Self.Mon" Multiplicity="1" />
+    <End Role="HuyMon" Type="Self.HuyMon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HuyMon">
+        <PropertyRef Name="IdMon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HuyMon__IdUser__6477ECF3">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="HuyMon" Type="Self.HuyMon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HuyMon">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Kho__IdMon__6B24EA82">
+    <End Role="Mon" Type="Self.Mon" Multiplicity="1" />
+    <End Role="Kho" Type="Self.Kho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kho">
+        <PropertyRef Name="IdMon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SanPhamKh__IdKhu__0D7A0286">
+    <End Role="KhuyenMai" Type="Self.KhuyenMai" Multiplicity="0..1" />
+    <End Role="SanPhamKhuyenMai" Type="Self.SanPhamKhuyenMai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhuyenMai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SanPhamKhuyenMai">
+        <PropertyRef Name="IdKhuyenMai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LuuKhuyen__IdMon__1332DBDC">
+    <End Role="Mon" Type="Self.Mon" Multiplicity="1" />
+    <End Role="LuuKhuyenMai" Type="Self.LuuKhuyenMai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LuuKhuyenMai">
+        <PropertyRef Name="IdMon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LuuKhuyen__IdUse__14270015">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="LuuKhuyenMai" Type="Self.LuuKhuyenMai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LuuKhuyenMai">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Mon__IdMayIn__60A75C0F">
+    <End Role="MayIn" Type="Self.MayIn" Multiplicity="0..1" />
+    <End Role="Mon" Type="Self.Mon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MayIn">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mon">
+        <PropertyRef Name="IdMayIn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Mon__IdUnit__5EBF139D">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+    <End Role="Mon" Type="Self.Mon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mon">
+        <PropertyRef Name="IdUnit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SanPhamKh__IdMon__0C85DE4D">
+    <End Role="Mon" Type="Self.Mon" Multiplicity="1" />
+    <End Role="SanPhamKhuyenMai" Type="Self.SanPhamKhuyenMai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SanPhamKhuyenMai">
+        <PropertyRef Name="IdMon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhieuNhap__IdUse__6E01572D">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="PhieuNhapKho" Type="Self.PhieuNhapKho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhieuNhapKho">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRole__IdRole__32E0915F">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="IdRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserFeatu__IdUse__3B75D760">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="UserFeature" Type="Self.UserFeature" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserFeature">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRole__IdUser__31EC6D26">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QuanLyNhaHangEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bans" EntityType="Self.Ban" />
+    <EntitySet Name="Cas" EntityType="Self.Ca" />
+    <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
+    <EntitySet Name="ChiTietHoaDonTemps" EntityType="Self.ChiTietHoaDonTemp" />
+    <EntitySet Name="ChiTietPhieuNhaps" EntityType="Self.ChiTietPhieuNhap" />
+    <EntitySet Name="DanhMucs" EntityType="Self.DanhMuc" />
+    <EntitySet Name="Features" EntityType="Self.Feature" />
+    <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
+    <EntitySet Name="HuyMons" EntityType="Self.HuyMon" />
+    <EntitySet Name="Infoes" EntityType="Self.Info" />
+    <EntitySet Name="Khoes" EntityType="Self.Kho" />
+    <EntitySet Name="KhuVucs" EntityType="Self.KhuVuc" />
+    <EntitySet Name="KhuyenMais" EntityType="Self.KhuyenMai" />
+    <EntitySet Name="LichSuBanGiaoCas" EntityType="Self.LichSuBanGiaoCa" />
+    <EntitySet Name="LichSuHoaDonThanhToans" EntityType="Self.LichSuHoaDonThanhToan" />
+    <EntitySet Name="LiDoes" EntityType="Self.LiDo" />
+    <EntitySet Name="LuuKhuyenMais" EntityType="Self.LuuKhuyenMai" />
+    <EntitySet Name="MayIns" EntityType="Self.MayIn" />
+    <EntitySet Name="Mons" EntityType="Self.Mon" />
+    <EntitySet Name="PhieuNhapKhoes" EntityType="Self.PhieuNhapKho" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="SanPhamKhuyenMais" EntityType="Self.SanPhamKhuyenMai" />
+    <EntitySet Name="TableTypes" EntityType="Self.TableType" />
+    <EntitySet Name="TinhTrangs" EntityType="Self.TinhTrang" />
+    <EntitySet Name="Units" EntityType="Self.Unit" />
+    <EntitySet Name="UserFeatures" EntityType="Self.UserFeature" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK__Ban__IdKhuVuc__4AB81AF0" Association="Self.FK__Ban__IdKhuVuc__4AB81AF0">
+      <End Role="KhuVuc" EntitySet="KhuVucs" />
+      <End Role="Ban" EntitySet="Bans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ban__IdTableType__49C3F6B7" Association="Self.FK__Ban__IdTableType__49C3F6B7">
+      <End Role="TableType" EntitySet="TableTypes" />
+      <End Role="Ban" EntitySet="Bans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ban__IdTinhTrang__4BAC3F29" Association="Self.FK__Ban__IdTinhTrang__4BAC3F29">
+      <End Role="TinhTrang" EntitySet="TinhTrangs" />
+      <End Role="Ban" EntitySet="Bans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__IdBan__76969D2E" Association="Self.FK__HoaDon__IdBan__76969D2E">
+      <End Role="Ban" EntitySet="Bans" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__IdCa__787EE5A0" Association="Self.FK__HoaDon__IdCa__787EE5A0">
+      <End Role="Ca" EntitySet="Cas" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HuyMon__IdCa__66603565" Association="Self.FK__HuyMon__IdCa__66603565">
+      <End Role="Ca" EntitySet="Cas" />
+      <End Role="HuyMon" EntitySet="HuyMons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LuuKhuyenM__IdCa__151B244E" Association="Self.FK__LuuKhuyenM__IdCa__151B244E">
+      <End Role="Ca" EntitySet="Cas" />
+      <End Role="LuuKhuyenMai" EntitySet="LuuKhuyenMais" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietHo__IdHoa__01142BA1" Association="Self.FK__ChiTietHo__IdHoa__01142BA1">
+      <End Role="HoaDon" EntitySet="HoaDons" />
+      <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietHo__IdMon__02084FDA" Association="Self.FK__ChiTietHo__IdMon__02084FDA">
+      <End Role="Mon" EntitySet="Mons" />
+      <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietHo__IdHoa__04E4BC85" Association="Self.FK__ChiTietHo__IdHoa__04E4BC85">
+      <End Role="HoaDon" EntitySet="HoaDons" />
+      <End Role="ChiTietHoaDonTemp" EntitySet="ChiTietHoaDonTemps" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietHo__IdMon__05D8E0BE" Association="Self.FK__ChiTietHo__IdMon__05D8E0BE">
+      <End Role="Mon" EntitySet="Mons" />
+      <End Role="ChiTietHoaDonTemp" EntitySet="ChiTietHoaDonTemps" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietPh__IdMon__72C60C4A" Association="Self.FK__ChiTietPh__IdMon__72C60C4A">
+      <End Role="Mon" EntitySet="Mons" />
+      <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietPh__IdPhi__71D1E811" Association="Self.FK__ChiTietPh__IdPhi__71D1E811">
+      <End Role="PhieuNhapKho" EntitySet="PhieuNhapKhoes" />
+      <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Mon__IdDanhMuc__5FB337D6" Association="Self.FK__Mon__IdDanhMuc__5FB337D6">
+      <End Role="DanhMuc" EntitySet="DanhMucs" />
+      <End Role="Mon" EntitySet="Mons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__IdUser__778AC167" Association="Self.FK__HoaDon__IdUser__778AC167">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichSuHoa__IdHoa__7C4F7684" Association="Self.FK__LichSuHoa__IdHoa__7C4F7684">
+      <End Role="HoaDon" EntitySet="HoaDons" />
+      <End Role="LichSuHoaDonThanhToan" EntitySet="LichSuHoaDonThanhToans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LuuKhuyen__IdHoa__123EB7A3" Association="Self.FK__LuuKhuyen__IdHoa__123EB7A3">
+      <End Role="HoaDon" EntitySet="HoaDons" />
+      <End Role="LuuKhuyenMai" EntitySet="LuuKhuyenMais" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HuyMon__IdLiDo__656C112C" Association="Self.FK__HuyMon__IdLiDo__656C112C">
+      <End Role="LiDo" EntitySet="LiDoes" />
+      <End Role="HuyMon" EntitySet="HuyMons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HuyMon__IdMon__6383C8BA" Association="Self.FK__HuyMon__IdMon__6383C8BA">
+      <End Role="Mon" EntitySet="Mons" />
+      <End Role="HuyMon" EntitySet="HuyMons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HuyMon__IdUser__6477ECF3" Association="Self.FK__HuyMon__IdUser__6477ECF3">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="HuyMon" EntitySet="HuyMons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Kho__IdMon__6B24EA82" Association="Self.FK__Kho__IdMon__6B24EA82">
+      <End Role="Mon" EntitySet="Mons" />
+      <End Role="Kho" EntitySet="Khoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SanPhamKh__IdKhu__0D7A0286" Association="Self.FK__SanPhamKh__IdKhu__0D7A0286">
+      <End Role="KhuyenMai" EntitySet="KhuyenMais" />
+      <End Role="SanPhamKhuyenMai" EntitySet="SanPhamKhuyenMais" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LuuKhuyen__IdMon__1332DBDC" Association="Self.FK__LuuKhuyen__IdMon__1332DBDC">
+      <End Role="Mon" EntitySet="Mons" />
+      <End Role="LuuKhuyenMai" EntitySet="LuuKhuyenMais" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LuuKhuyen__IdUse__14270015" Association="Self.FK__LuuKhuyen__IdUse__14270015">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="LuuKhuyenMai" EntitySet="LuuKhuyenMais" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Mon__IdMayIn__60A75C0F" Association="Self.FK__Mon__IdMayIn__60A75C0F">
+      <End Role="MayIn" EntitySet="MayIns" />
+      <End Role="Mon" EntitySet="Mons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Mon__IdUnit__5EBF139D" Association="Self.FK__Mon__IdUnit__5EBF139D">
+      <End Role="Unit" EntitySet="Units" />
+      <End Role="Mon" EntitySet="Mons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SanPhamKh__IdMon__0C85DE4D" Association="Self.FK__SanPhamKh__IdMon__0C85DE4D">
+      <End Role="Mon" EntitySet="Mons" />
+      <End Role="SanPhamKhuyenMai" EntitySet="SanPhamKhuyenMais" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhieuNhap__IdUse__6E01572D" Association="Self.FK__PhieuNhap__IdUse__6E01572D">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PhieuNhapKho" EntitySet="PhieuNhapKhoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRole__IdRole__32E0915F" Association="Self.FK__UserRole__IdRole__32E0915F">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserFeatu__IdUse__3B75D760" Association="Self.FK__UserFeatu__IdUse__3B75D760">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserFeature" EntitySet="UserFeatures" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRole__IdUser__31EC6D26" Association="Self.FK__UserRole__IdUser__31EC6D26">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

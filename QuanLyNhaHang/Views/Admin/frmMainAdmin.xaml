@@ -1,0 +1,41 @@
+﻿<Window x:Class="QuanLyNhaHang.Views.frmMainAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:customcontrol="clr-namespace:QuanLyNhaHang.CustomControl"
+        xmlns:uc="clr-namespace:QuanLyNhaHang.Views.UC"
+        xmlns:blur="http://schemas.microsoft.com/expression/2010/effects"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        Title="frmMainAdmin"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        DataContext="{StaticResource MainAdminVM}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <uc:ControlBarUC/>
+        </Grid>
+        <Grid Background="{Binding screen.Background}"
+          Opacity="{Binding screen.Opacity}"
+              Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Cursor="Hand">
+                <customcontrol:MenuWithSubMenuControl HasIcon="True" SubMenuPadding="15,0,0,0"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Frame x:Name="MainWindowFrame" NavigationUIVisibility="Hidden"/>
+            </Grid>
+        </Grid>
+    </Grid>
+
+
+</Window>

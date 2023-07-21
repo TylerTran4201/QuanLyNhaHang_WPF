@@ -1,0 +1,226 @@
+﻿<Page x:Class="QuanLyNhaHang.Views.Admin.Pages.MonAn"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyNhaHang.Views.Admin.Pages"
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1300"
+      DataContext="{DynamicResource MonAnVM}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Background="{DynamicResource PrimaryBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" BorderBrush="{DynamicResource Primary}"
+                  BorderThickness="3" Margin="20">
+            <GroupBox.Header>
+                <Border Background="{DynamicResource Primary}"
+                        Width="100"
+                        CornerRadius="2"
+                        Height="25">
+                    <TextBlock VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Text="Thông Tin"
+                               Foreground="White"/>
+                </Border>
+            </GroupBox.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <TextBlock Text="Name:" Margin="20 0 0 0"/>
+                    <TextBox Width="auto"
+                             Height="25"
+                             Margin="10 0"
+                             VerticalAlignment="Bottom"
+                             Text="{Binding txtName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <TextBlock Text="Giá Xuất:" Margin="20 0 0 0"/>
+                    <TextBox Width="auto"
+                             Height="25"
+                             Margin="10 0"
+                             VerticalAlignment="Bottom"
+                             Text="{Binding txtPrice,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <TextBlock Text="Giá Nhập:" Margin="20 0 0 0"/>
+                    <TextBox Width="auto"
+                             Height="25"
+                             Margin="10 0"
+                             VerticalAlignment="Bottom"
+                             Text="{Binding txtPriceInput,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </Grid>
+                <Grid Grid.Column="3">
+                    <TextBlock Text="Danh Mục:" Margin="20 0 0 0"/>
+                    <ComboBox Width="auto"
+                              Height="25"
+                              Margin="10 0"
+                              VerticalAlignment="Bottom"
+                              DisplayMemberPath="Name"
+                              ItemsSource="{Binding DanhMucs}"
+                              SelectedItem="{Binding SelectedDanhMuc}"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBlock Text="Đơn Vị:" Margin="20 0 0 0"/>
+                    <ComboBox Width="auto"
+                              Height="25"
+                              Margin="10 0"
+                              VerticalAlignment="Bottom"
+                              DisplayMemberPath="Name"
+                              ItemsSource="{Binding Units}"
+                              SelectedItem="{Binding SelectedUnit}"/>
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="1">
+                    <TextBlock Text="Máy In:" Margin="20 0 0 0"/>
+                    <ComboBox Width="auto"
+                              Height="25"
+                              Margin="10 0"
+                              VerticalAlignment="Bottom"
+                              DisplayMemberPath="Name"
+                              ItemsSource="{Binding MayIns}"
+                              SelectedItem="{Binding SelectedMayIn}"/>
+                </Grid>
+                <Button Grid.Row="2"
+                        Background="{DynamicResource Primary}"
+                        Content="Thêm"
+                        Style="{DynamicResource ButtonCustom}"
+                        Command="{Binding AddCommand}"/>
+                <Button Grid.Row="2" Grid.Column="1"
+                        Background="{DynamicResource Primary}"
+                        Content="Sửa"
+                        Style="{DynamicResource ButtonCustom}"
+                        Command="{Binding UpdateCommand}"/>
+                <Button Grid.Row="2" Grid.Column="3"
+                        Background="{DynamicResource Primary}"
+                        Content="Làm Mới"
+                        Style="{DynamicResource ButtonCustom}"
+                        Command="{Binding ClearCommad}"/>
+            </Grid>
+        </GroupBox>
+        <Grid Grid.Row="1">
+            <ComboBox
+                Margin="10 0 0 0"
+                Width="200"
+                HorizontalAlignment="Left"
+                ItemsSource="{Binding DanhMucs}"
+                SelectedItem="{Binding ComboboxDanhMuc}"
+                DisplayMemberPath="Name">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding ComboboxSelectedCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ComboBox>
+            <TextBlock
+                   HorizontalAlignment="Center"
+                   FontSize="20"
+                   FontWeight="Medium"
+                   Foreground="{DynamicResource Secundary}"
+                   Text="Danh Sách Món Ăn"/>
+        </Grid>
+        <DataGrid Grid.Row="2"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  SelectionMode="Single"
+                  IsReadOnly="True"
+                  CanUserResizeColumns="False"
+                  Margin="10"
+                  AllowDrop="False"
+                  ItemsSource="{Binding Mons, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonUp">
+                    <i:InvokeCommandAction Command="{Binding SelectedCommand}"
+                                           CommandParameter="{Binding Path=SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="#" Width="80"
+                                    Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Tên"
+                                    Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Giá Xuất"
+                                    Binding="{Binding Price}"/>
+                <DataGridTextColumn Header="Giá Nhập"
+                                    Binding="{Binding PriceInput}"/>
+                <DataGridTextColumn Header="Danh Mục"
+                                    Binding="{Binding DanhMuc.Name}"/>
+                <DataGridTextColumn Header="Đơn Vị"
+                                    Binding="{Binding Unit.Name}"/>
+                <DataGridTextColumn Header="Máy In"
+                                    Binding="{Binding MayIn.Name}"/>
+                <DataGridTemplateColumn Header="Trạng Thái">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Width="100"
+                                    Style="{DynamicResource ButtonCustom}"
+                                    Background="{DynamicResource Primary}"
+                                    Command="{Binding Path=DataContext.ChangeStatusCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                    CommandParameter="{Binding Path=SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}">
+                                <Button.Content>
+                                    <Label HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               FontSize="10">
+                                        <Label.Style>
+                                            <Style TargetType="Label">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Path=Status}" Value="0">
+                                                        <Setter Property="Content" Value="Không hoạt động"/>
+                                                        <Setter Property="Foreground" Value="#F5CE3B"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Path=Status}" Value="1">
+                                                        <Setter Property="Content" Value="hoạt động"/>
+                                                        <Setter Property="Foreground" Value="#4CF4F4"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Label.Style>
+                                    </Label>
+                                </Button.Content>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Ngày Tạo"
+                                    Binding="{Binding CreatedAt}"/>
+                <DataGridTextColumn Header="Ngày Sửa"
+                                    Binding="{Binding ModifiedAt}"/>
+                <DataGridTemplateColumn Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button BorderThickness="0"
+                                    Cursor="Hand"
+                                    Background="{DynamicResource RedButton}"
+                                    Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                    CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}, Mode=FindAncestor}}">
+                                <Path Fill="WhiteSmoke"
+                                      Stretch="Fill"
+                                      Width="20"
+                                      Height="20"
+                                      Data="{DynamicResource icon_delete}"/>
+                            </Button>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

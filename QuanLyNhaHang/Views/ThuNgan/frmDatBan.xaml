@@ -1,0 +1,503 @@
+﻿<Window x:Class="QuanLyNhaHang.Views.ThuNgan.frmDatBan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyNhaHang.Views.ThuNgan"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:converter="clr-namespace:QuanLyNhaHang.Helpers.Converter"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        WindowState="Maximized"
+        Background="Transparent"
+        Width="1366" Height="768"
+        x:Name="_this"
+        DataContext="{DynamicResource DatBanVM}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding ElementName=_this}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Background="{Binding screen.Background}"
+          Opacity="{Binding screen.Opacity}">
+        <Grid Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Background="{DynamicResource Primary}">
+                <Button Style="{DynamicResource ButtonCustom}"
+                    Height="20"
+                    Width="70"
+                    Background="{DynamicResource RedButton}"
+                    Content="Thoát"
+                    FontSize="12"
+                    Cursor="Hand"
+                    Command="{Binding ExitCommand}"
+                    CommandParameter="{Binding ElementName=_this}"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <!--Phần Thống Kê Chi Tiết-->
+                <Border Grid.Column="0" BorderBrush="Black"
+                    BorderThickness="0 0 1 0">
+                    <Grid Background="LightGray">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="150"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Border BorderBrush="Black"
+                        BorderThickness="1 1 0 1"
+                        Grid.Row="0">
+                            <TextBlock
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontSize="20"
+                           Foreground="{DynamicResource Primary}"
+                           FontWeight="Medium">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat=" {0} - {1}">
+                                        <Binding Path="ban.KhuVuc.Name"/>
+                                        <Binding Path="ban.Name"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </Border>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0"
+                              VerticalAlignment="Center">
+                                <TextBlock Text="Tổng Tiền:"
+                                   Margin="5 0 0 0"/>
+                                <TextBox Width="200"
+                                         HorizontalAlignment="Left"
+                                         Margin="80 0 0 0"
+                                         Text="{Binding tongTien}"
+                                         IsEnabled="False"/>
+                            </Grid>
+                            <Grid Grid.Row="1"
+                              VerticalAlignment="Center">
+                                <TextBlock Text="Giảm % (tiền):"
+                                   Margin="5 0 0 0"/>
+                                <TextBox Width="200"
+                                     HorizontalAlignment="Left" 
+                                     Margin="80 0 0 0"/>
+                            </Grid>
+                            <Grid Grid.Row="2"
+                          VerticalAlignment="Center">
+                                <TextBlock Text="Giảm Trừ:"
+                                   Margin="5 0 0 0"/>
+                                <TextBox Width="200"
+                                         HorizontalAlignment="Left"
+                                         Margin="80 0 0 0"
+                                         IsEnabled="False"/>
+                            </Grid>
+                            <Grid Grid.Row="3"
+                          VerticalAlignment="Center">
+                                <TextBlock Text="Thành Tiền:"
+                                   Margin="5 0 0 0"/>
+                                <TextBox Width="200"
+                                         HorizontalAlignment="Left"
+                                         Margin="80 0 0 0"
+                                         IsEnabled="False"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0"
+                            CornerRadius="5 5 0 0"
+                            Background="{DynamicResource Primary}">
+                                <TextBlock Text="DANH SÁCH MẶT HÀNG TẠM THỜI"
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"/>
+                            </Border>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <DataGrid Grid.Column="0"
+                                      AutoGenerateColumns="False"
+                                      CanUserAddRows="False"
+                                      SelectionMode="Single"
+                                      IsReadOnly="True"
+                                      CanUserResizeColumns="False"
+                                      Margin="10"
+                                      AllowDrop="False"
+                                      ItemsSource="{Binding hoaDonTemp.ChiTietHoaDons, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="#" Width="60"
+                                    Binding="{Binding Id}"/>
+                                        <DataGridTextColumn Header="Mặt hàng"
+                                    Binding="{Binding Mon.Name}"/>
+                                        <DataGridTextColumn Header="ĐVT"
+                                    Binding="{Binding Mon.Unit.Name}"/>
+                                        <DataGridTextColumn Header="Số lượng"
+                                    Binding="{Binding Quantity}"/>
+                                        <DataGridTextColumn Header="Đơn giá"
+                                    Binding="{Binding Mon.Price}"/>
+                                        <DataGridTextColumn Header="Thành tiền"
+                                                            Binding="{Binding PriceBan}"/>
+                                        <DataGridTemplateColumn Width="100">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button BorderThickness="0"
+                                                            Cursor="Hand"
+                                                            Width="20"
+                                                            Height="20"
+                                                            Background="{DynamicResource RedButton}"
+                                                            Command="{Binding DataContext.plusCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                            CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}, Mode=FindAncestor}}">
+                                                        <Path Fill="WhiteSmoke"
+                                                          Stretch="Fill"
+                                                          Width="20"
+                                                          Height="20"
+                                                          Data="{DynamicResource icon_Plus}"/>
+                                                    </Button>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Width="100">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button BorderThickness="0"
+                                                            Cursor="Hand"
+                                                            Width="20"
+                                                            Height="20"
+                                                            Background="{DynamicResource RedButton}"
+                                                            Command="{Binding DataContext.minusCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                            CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}, Mode=FindAncestor}}">
+                                                        <Path Fill="WhiteSmoke"
+                                                          Stretch="Fill"
+                                                          Width="20"
+                                                          Height="20"
+                                                          Data="{DynamicResource icon_Minus}"/>
+                                                    </Button>
+
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Button Grid.Column="1"
+                                    Height="30"
+                                    Content="Lưu dữ liệu"
+                                    Width="auto"
+                                    FontWeight="Medium"
+                                    Command="{Binding saveCommand}">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Path=hoaDonTemp.ChiTietHoaDons.Count}" Value="0">
+                                                    <Setter Property="IsEnabled" Value="False"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0"
+                            CornerRadius="5 5 0 0"
+                            Background="{DynamicResource Primary}" Grid.ColumnSpan="2">
+                                <TextBlock Text="DANH SÁCH MẶT HÀNG TẠM THỜI"
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"/>
+                            </Border>
+                            <DataGrid Grid.Row="1"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False"
+                                  SelectionMode="Single"
+                                  IsReadOnly="True"
+                                  CanUserResizeColumns="False"
+                                  Margin="10"
+                                  AllowDrop="False"
+                                  ItemsSource="{Binding hoaDon.ChiTietHoaDons, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Mặt hàng"
+                                    Binding="{Binding Mon.Name}"/>
+                                    <DataGridTextColumn Header="ĐVT"
+                                    Binding="{Binding Mon.Unit.Name}"/>
+                                    <DataGridTextColumn Header="Số lượng"
+                                    Binding="{Binding Quantity}"/>
+                                    <DataGridTextColumn Header="Đơn giá"
+                                    Binding="{Binding Mon.Price}"/>
+                                    <DataGridTextColumn Header="Thành tiền"
+                                                        Binding="{Binding PriceBan}"/>
+                                    <DataGridTextColumn Header="Hình Thức"/>
+                                    <DataGridTextColumn Header="Ghi Chú"/>
+                                    <DataGridTemplateColumn Width="100">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button BorderThickness="0"
+                                                        Cursor="Hand"
+                                                        Background="{DynamicResource RedButton}"
+                                                        Command="{Binding DataContext.DeleteMonCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                        CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}, Mode=FindAncestor}}">
+                                                    <Path Fill="WhiteSmoke"
+                                                          Stretch="Fill"
+                                                          Width="20"
+                                                          Height="20"
+                                                          Data="{DynamicResource icon_delete}"/>
+                                                </Button>
+
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Grid>
+                </Border>
+                <!--Phần Chức Năng và Món-->
+                <Grid Grid.Column="1" Background="WhiteSmoke">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="260"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Style="{DynamicResource ThuNgan.ChucNang.Button}"
+                                    Height="25" Width="90"
+                                    HorizontalAlignment="Center"
+                                    FontWeight="Medium"
+                                    Content="Tặng"
+                                    Click="Button_Click"/>
+                                <Button Grid.Column="1"
+                                    Style="{DynamicResource ThuNgan.ChucNang.Button}"
+                                    Height="25" Width="90"
+                                    HorizontalAlignment="Center"
+                                    FontWeight="Medium"
+                                    Content="In bếp - bar"
+                                    Click="Button_Click"/>
+                                <Button Grid.Column="2"
+                                    Style="{DynamicResource ThuNgan.ChucNang.Button}"
+                                    Height="25" Width="90"
+                                    HorizontalAlignment="Center"
+                                    FontWeight="Medium"
+                                    Content="In Tạm Tính"
+                                    Click="Button_Click"/>
+                            </Grid>
+                            <!--Hiện Thông Tin Hóa Đơn-->
+                            <Border Grid.Row="1" CornerRadius="0 10 10 0"
+                                BorderBrush="Black" BorderThickness="0 1 1 1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid>
+                                        <TextBlock HorizontalAlignment="Left"
+                                               VerticalAlignment="Center"
+                                               Text="Ngày: "
+                                               FontWeight="Bold"/>
+                                        <TextBlock HorizontalAlignment="Left"
+                                               Margin="50 0 0 0"
+                                               VerticalAlignment="Center"
+                                               Text="{Binding hoaDon.Ngay}"
+                                               FontWeight="Bold"/>
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <TextBlock HorizontalAlignment="Left"
+                                               VerticalAlignment="Center"
+                                               Text="Mã HĐ: "
+                                               FontWeight="Bold"/>
+                                        <TextBlock HorizontalAlignment="Left"
+                                               Margin="100 0 0 0"
+                                               VerticalAlignment="Center"
+                                               Text="{Binding hoaDon.Id}"
+                                               FontWeight="Bold"/>
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <TextBlock HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Text="Phụ Thu: "
+                                               Foreground="{DynamicResource RedButton}"
+                                               FontWeight="Bold"/>
+                                        <TextBox HorizontalAlignment="Left"
+                                               VerticalAlignment="Center"
+                                               Height="16"
+                                               Width="100"
+                                               Margin="60 0 0 0"/>
+                                    </Grid>
+                                    <Grid Grid.Row="1" Grid.Column="1">
+                                        <TextBlock HorizontalAlignment="Left"
+                                               VerticalAlignment="Center"
+                                               Text="Ghi chú phụ thu: "                                               FontWeight="Bold"/>
+                                        <TextBox HorizontalAlignment="Left"
+                                               VerticalAlignment="Center"
+                                               Height="16"
+                                               Width="100"
+                                               Margin="100 0 0 0"/>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Button
+                                Width="auto"
+                                Height="auto"
+                                Margin="5"
+                                Content="Thanh Toán"
+                                Command="{Binding ThanhToanCommand}"
+                                CommandParameter="{Binding ElementName=_this}">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                        <Setter Property="Margin" Value="5 2"/>
+                                        <Setter Property="Foreground" Value="Yellow"/>
+                                        <Setter Property="Background" Value="{DynamicResource Primary}"/>
+                                        <Setter Property="Width" Value="100"/>
+                                        <Setter Property="Height" Value="35"/>
+                                        <Setter Property="FontSize" Value="14"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                        <Setter Property="BorderBrush" Value="{DynamicResource Primary}"/>
+                                        <Style.Resources>
+                                            <Style TargetType="{x:Type Border}">
+                                                <Setter Property="CornerRadius" Value="5"/>
+                                            </Style>
+                                        </Style.Resources>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=hoaDon.ChiTietHoaDons.Count}" Value="0">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Setter Property="Foreground" Value="White"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                    <!--Hiện Danh Mục Món Ăn-->
+                    <Border Grid.Row="1"
+                        BorderThickness="1" BorderBrush="Black">
+                        <ItemsControl Background="Transparent"
+                          BorderThickness="0"
+                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                          ItemsSource="{Binding danhMucs,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                          HorizontalAlignment="Center">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Width="100" Height="40"
+                                        Cursor="Hand"
+                                        Margin="5"
+                                        Foreground="{DynamicResource RedButton}"
+                                        Name="btnDanhMuc"
+                                        Command="{Binding ElementName=_this,Path=DataContext.btnDanhMucCommand}"
+                                        CommandParameter="{Binding ElementName=btnDanhMuc}">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="{Binding Name}"
+                                               FontSize="15"
+                                               Foreground="White"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Border>
+                    <!--Hiện Món Ăn-->
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <TextBlock HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Foreground="{DynamicResource RedButton}"
+                                   Text="Nhấp đôi chuột để sử dụng sử dụng mặt hàng"/>
+                            <TextBlock HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Foreground="{DynamicResource Primary}"
+                                   Text="Bạn Đang Chọn: Mì Cay Cấp 7"/>
+                        </Grid>
+                        <Border Grid.Row="1"
+                            BorderBrush="Black" BorderThickness="1">
+                            <ItemsControl Background="Transparent"
+                          BorderThickness="0"
+                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                          ItemsSource="{Binding selectedDanhMuc.Mons,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                          HorizontalAlignment="Center">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Width="180" Height="80"
+                                            Cursor="Hand"
+                                            Margin="5"
+                                            Name="btnMon"
+                                            Foreground="{DynamicResource RedButton}"
+                                            Command="{Binding ElementName=_this,Path=DataContext.selectedMonCommand}"
+                                            CommandParameter="{Binding ElementName=btnMon}">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Vertical">
+                                                    <TextBlock Text="{Binding Name}"
+                                               FontSize="15"
+                                               Foreground="White"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,86 @@
+﻿<Window x:Class="QuanLyNhaHang.Views.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyNhaHang.Views"
+        xmlns:uc="clr-namespace:QuanLyNhaHang.Views.UC"
+        xmlns:CustomControl="clr-namespace:QuanLyNhaHang.Style"
+        x:Name="Window"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+        Title="Login" Height="500" Width="700"
+        ResizeMode="NoResize"
+        DataContext="{StaticResource LoginVM}">
+    <Window.InputBindings>
+        <KeyBinding Key="Return"
+                    Command="{Binding LoginCommand}"
+                    CommandParameter="{Binding ElementName=Window}"/>
+    </Window.InputBindings>
+    <Grid Background="{Binding screen.Background}"
+          Opacity="{Binding screen.Opacity}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <uc:ControlBarUC/>
+        </Grid>
+        <Grid Background="WhiteSmoke"
+              Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Margin="35,0"
+                   Grid.Row="0"
+                   FontSize="29"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top">
+            <Run Text="Quản Lý"/>
+            <Run FontWeight="Bold"
+                 Text="Nhà Hàng"/>
+            </TextBlock>
+            <Grid Grid.Row="1"
+              Width="400"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <!--UserName-->
+                    <RowDefinition Height="100"/>
+                    <!--Email-->
+                    <RowDefinition Height="100"/>
+                    <!--Password-->
+                    <RowDefinition/>
+                    <!--Button-->
+                    <RowDefinition/>
+                    <!--Note-->
+                </Grid.RowDefinitions>
+                <TextBlock VerticalAlignment="Center"
+                       FontSize="30"
+                       Foreground="#FF01A3ff"
+                       FontWeight="Bold"
+                       Text="Login"/>
+                <CustomControl:TextBoxWithPlaceHolder Grid.Row="1"
+                                                  PlaceHolder="UserName"
+                                                  Text="{Binding username,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <CustomControl:TextBoxWithPlaceHolder Grid.Row="2"
+                                                  PlaceHolder="Password"
+                                                  IsPassword="True"
+                                                  Text="{Binding password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Grid.Row="3" Style="{DynamicResource ButtonCustom}"
+                    Height="60"
+                    HorizontalAlignment="Right"
+                    Background="#FF01A3ff"
+                    Foreground="White"
+                    Content="Login"
+                    Command="{Binding LoginCommand}"
+                    CommandParameter="{Binding ElementName=Window}"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="QuanLyNhaHang.Views.UC.ControlBarUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Name="_this"
+             DataContext="{DynamicResource ControlBarVM}">
+    <DockPanel Background="#a486cf">
+        <StackPanel DockPanel.Dock="Right" Background="Transparent" Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="2 4 2 4"/>
+                    <Setter Property="Width" Value="40"/>
+                    <Setter Property="Height" Value="25"/>
+                </Style>
+            </StackPanel.Resources>
+            <Button Background="{DynamicResource GreenButton}"
+                    Command="{Binding MiniCommand}"
+                    CommandParameter="{Binding ElementName=_this}">
+                <Path Fill="WhiteSmoke"
+                      Stretch="Fill"
+                      Data="{DynamicResource icon_Minus}"/>
+            </Button>
+            <Button Background="{DynamicResource GreenButton}"
+                    Command="{Binding MaxiCommand}"
+                    CommandParameter="{Binding ElementName=_this}">
+                <Path Fill="WhiteSmoke"
+                      Stretch="Fill"
+                      Data="{DynamicResource icon_Maximize}"/>
+            </Button>
+            <Button Command="{Binding CloseCommand}"
+                    CommandParameter="{Binding ElementName=_this}"
+                    Background="{DynamicResource RedButton}">
+                <Path Fill="WhiteSmoke"
+                      Stretch="Fill"
+                      Data="{DynamicResource icon_Close}"/>
+            </Button>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+            <Image Source="/Assets/Logo.png"
+                   Width="50"
+                   Height="36"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+            <TextBlock VerticalAlignment="Center" Margin="0 0 0 0" Text="Phần Mềm Quản Lý Nhà Hàng"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Foreground="White"/>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

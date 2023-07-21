@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewmodel="clr-namespace:QuanLyNhaHang.ViewModels">
+    <viewmodel:ControlBarViewModel x:Key="ControlBarVM"/>
+    <viewmodel:MainAdminViewModel x:Key="MainAdminVM"/>
+    <viewmodel:MainThuNganViewModel x:Key="MainThuNganVM"/>
+    <viewmodel:TaiKhoanViewModel x:Key="TaiKhoanVM"/>
+    <viewmodel:VaiTroTaiKhoanViewModel x:Key="VaiTroTaiKhoanVM"/>
+    <viewmodel:VaiTroViewModel x:Key="VaiTroVM"/>
+    <viewmodel:MonAnViewModel x:Key="MonAnVM"/>
+    <viewmodel:DanhMucMonAnViewModel x:Key="DanhMucMonAnVM"/>
+    <viewmodel:LoginViewModel x:Key="LoginVM"/>
+    <viewmodel:KhuVucViewModel x:Key="KhuVucVM"/>
+    <viewmodel:LoaiBanViewModel x:Key="LoaiBanVM"/>
+    <viewmodel:BanViewModel x:Key="BanVM"/>
+    <viewmodel:DatBanViewModel x:Key="DatBanVM"/>
+    <viewmodel:ChuyeBanViewModel x:Key="ChuyenBanVM"/>
+    <viewmodel:HuyBanViewModel x:Key="HuyBanVM"/>
+    <viewmodel:GopTachbanViewModel x:Key="GopTachBanVM"/>
+    <viewmodel:GopTachBan_NhapSoLuongViewModel x:Key="GopTachBanNhapSoLuong_VM"/>
+    <viewmodel:ChiViewModel x:Key="ChiVM"/>
+    <viewmodel:ThanhToanHoaDonViewModel x:Key="ThanhToanHoaDonVM"/>
+    <viewmodel:ManHinhGiamSatViewModel x:Key="ManHinhGiamSatVM"/>
+</ResourceDictionary>

@@ -1,0 +1,42 @@
+﻿<Window x:Class="QuanLyNhaHang.Views.ThuNgan.frmGopTachBan_NhapSoLuong"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:local="clr-namespace:QuanLyNhaHang.Views.ThuNgan"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Height="150" Width="400"
+        x:Name="_this"
+        DataContext="{DynamicResource GopTachBanNhapSoLuong_VM}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid VerticalAlignment="Bottom"
+          Margin="0 0 0 30">
+        <Label Content="Nhập:"
+               FontSize="16"
+               FontWeight="Medium"/>
+        <TextBox Width="200"
+                 x:Name="txtInput"
+                 Height="30"
+                 HorizontalAlignment="Left"
+                 Margin="60 0 0 0"
+                 FontSize="16"
+                 Text="{Binding Quantity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Style="{DynamicResource ThuNgan.ChucNang.Button}"
+                Content="OK"
+                HorizontalAlignment="Right"
+                Command="{Binding SubmitCommand}"
+                CommandParameter="{Binding ElementName=_this}"/>
+        <Label Content="Yêu cầu nhập số"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Top"
+               Margin="0 -30 10 0"
+               FontWeight="Medium"
+               Foreground="{DynamicResource RedButton}"/>
+    </Grid>
+</Window>

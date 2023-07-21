@@ -1,0 +1,84 @@
+﻿<Window x:Class="QuanLyNhaHang.Views.ThuNgan.frmHuyBan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:local="clr-namespace:QuanLyNhaHang.Views.ThuNgan"
+        mc:Ignorable="d"
+        
+        WindowStartupLocation="CenterScreen"
+        Title="frmHuyBan" Height="250" Width="300"
+        DataContext="{DynamicResource HuyBanVM}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding ElementName=_this}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Column="0" BorderBrush="{DynamicResource Primary}"
+                  BorderThickness="3" Margin="5">
+            <GroupBox.Header>
+                <Border Background="{DynamicResource Primary}"
+                        Width="200"
+                        CornerRadius="2"
+                        Height="25">
+                    <TextBlock VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Text="Chọn thông tin khu vực và bàn"
+                               Foreground="White"
+                                   FontWeight="Medium"/>
+                </Border>
+            </GroupBox.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0"
+                          VerticalAlignment="Center">
+                    <TextBlock Text="Khu:"
+                                   Margin="5"
+                                   FontSize="16"
+                                   FontWeight="Medium"/>
+                    <ComboBox Width="190"
+                                  Margin="10 0 0 0"
+                                  ItemsSource="{Binding khuVucs}"
+                                  DisplayMemberPath="Name">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding DataContext.KhuVucSelectedChangeCommand, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}"
+                                                           CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}, Mode=FindAncestor}}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
+                </Grid>
+                <Grid Grid.Row="1"
+                          VerticalAlignment="Center">
+                    <TextBlock Text="Bàn:"
+                                   Margin="5"
+                                   FontSize="16"
+                                   FontWeight="Medium"/>
+                    <ComboBox Width="190"
+                                  Margin="10 0 0 0"
+                                  DisplayMemberPath="Name"
+                                  ItemsSource="{Binding bans,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                  SelectedItem="{Binding SelectedBan}"/>
+                </Grid>
+            </Grid>
+        </GroupBox>
+        <Grid Grid.Row="1">
+            <Button Style="{DynamicResource ThuNgan.ChucNang.Button}"
+                    Height="30"
+                    Width="100"
+                    FontSize="16"
+                    FontWeight="Medium"
+                    Content="Hủy"
+                    Command="{Binding HuyCommand}"/>
+        </Grid>
+    </Grid>
+</Window>

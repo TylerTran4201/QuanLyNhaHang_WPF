@@ -1,0 +1,248 @@
+﻿<Window x:Class="QuanLyNhaHang.Views.ThuNgan.frmGopTachBan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:local="clr-namespace:QuanLyNhaHang.Views.ThuNgan"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        x:Name="_this"
+        Title="frmGopTachBan" Height="550" Width="1200"
+        DataContext="{DynamicResource GopTachBanVM}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Column="0" BorderBrush="{DynamicResource Primary}"
+                  BorderThickness="3" Margin="5">
+            <GroupBox.Header>
+                <Border Background="{DynamicResource Primary}"
+                        Width="250"
+                        CornerRadius="2"
+                        Height="25">
+                    <TextBlock VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Text="DANH SÁCH BÀN PHỤ ĐANG SỬ DỤNG"
+                               Foreground="White"
+                                   FontWeight="Medium"/>
+                </Border>
+            </GroupBox.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" VerticalAlignment="Center">
+                    <Label FontSize="16"
+                           Content="DS BÀN SỬ DỤNG:"
+                           FontWeight="Medium"
+                           Foreground="{DynamicResource Primary}"/>
+                    <ComboBox Width="150"
+                              Margin="50 0 0 0"
+                              ItemsSource="{Binding bans, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                              DisplayMemberPath="Name"
+                              SelectedItem="{Binding selectedBan1}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding DataContext.BanSelectedChanged1, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}"
+                                                           CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}, Mode=FindAncestor}}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
+                </Grid>
+                <Grid Grid.Row="1" VerticalAlignment="Center"
+                      HorizontalAlignment="Right">
+                    <Label FontSize="16"
+                           Content="Tổng tiền bàn phụ:"
+                           FontWeight="Medium"
+                           Margin="0 0 100 0"
+                           Foreground="{DynamicResource Primary}"/>
+                    <Label FontSize="16"
+                           HorizontalAlignment="Right"
+                           Content=""
+                           FontWeight="Medium"
+                           Foreground="{DynamicResource RedButton}"/>
+                </Grid>
+                <DataGrid Grid.Row="2"
+                                      AutoGenerateColumns="False"
+                                      CanUserAddRows="False"
+                                      SelectionMode="Single"
+                                      IsReadOnly="True"
+                                      CanUserResizeColumns="False"
+                                      Margin="10"
+                                      AllowDrop="False"
+                                      ItemsSource="{Binding hoadon1.ChiTietHoaDons, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Mặt hàng"
+                                    Binding="{Binding Mon.Name}"/>
+                        <DataGridTextColumn Header="ĐVT"
+                                    Binding="{Binding Mon.Unit.Name}"/>
+                        <DataGridTextColumn Header="Số lượng"
+                                            Width="50"
+                                            Binding="{Binding Quantity}"/>
+                        <DataGridTextColumn Header="Đơn giá"
+                                    Binding="{Binding Mon.Price}"/>
+                        <DataGridTextColumn Header="T.Tiền"
+                                    Binding="{Binding PriceBan}"/>
+                        <DataGridTemplateColumn Width="50">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button BorderThickness="0"
+                                                            Cursor="Hand"
+                                                            Width="20"
+                                                            Height="20"
+                                                            Background="{DynamicResource RedButton}"
+                                                            Command="{Binding DataContext.PlusCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                            CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}, Mode=FindAncestor}}">
+                                        <Path Fill="WhiteSmoke"
+                                                          Stretch="Fill"
+                                                          Width="20"
+                                                          Height="20"
+                                                          Data="{DynamicResource icon_Plus}"/>
+                                    </Button>
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </GroupBox>
+
+        <Grid Grid.Column="1" VerticalAlignment="Top">
+            <Button Width="120"
+                    Height="40"
+                    Content="Gộp bàn"
+                    Command="{Binding GopBanCommand}"
+                    CommandParameter="{Binding ElementName=_this}">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Margin" Value="5 2"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Background" Value="{DynamicResource Primary}"/>
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="35"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="BorderBrush" Value="{DynamicResource Primary}"/>
+                        <Style.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=hoadon1}" Value="{x:Null}">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=hoadon2}" Value="{x:Null}">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Style="{DynamicResource ThuNgan.ChucNang.Button}"
+                    Width="120"
+                    Height="40"
+                    Margin="0 100 0 0"
+                    Content="Lưu"
+                    Command="{Binding LuuCommand}"
+                    CommandParameter="{Binding ElementName=_this}"
+                    IsEnabled="{Binding btnLuuEnable}"/>
+            <Button Style="{DynamicResource ThuNgan.ChucNang.Button}"
+                    Width="120"
+                    Height="40"
+                    Margin="0 200 0 0"
+                    Content="Làm mới"
+                    Command="{Binding LamMoiCommand}"/>
+        </Grid>
+        <GroupBox Grid.Column="2" BorderBrush="Orange"
+                  BorderThickness="3" Margin="5">
+            <GroupBox.Header>
+                <Border Background="Orange"
+                        Width="250"
+                        CornerRadius="2"
+                        Height="25">
+                    <TextBlock VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Text="DANH SÁCH BÀN CHÍNH ĐANG SỬ DỤNG"
+                               Foreground="White"
+                                   FontWeight="Medium"/>
+                </Border>
+            </GroupBox.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" VerticalAlignment="Center">
+                    <Label FontSize="16"
+                           Content="DS BÀN SỬ DỤNG:"
+                           FontWeight="Medium"
+                           Foreground="{DynamicResource Primary}"/>
+                    <ComboBox Width="150"
+                              Margin="50 0 0 0"
+                              ItemsSource="{Binding bans}"
+                              DisplayMemberPath="Name"
+                              SelectedItem="{Binding selectedBan2}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding DataContext.BanSelectedChanged2, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}"
+                                                           CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}, Mode=FindAncestor}}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
+                </Grid>
+                <Grid Grid.Row="1" VerticalAlignment="Center"
+                      HorizontalAlignment="Right">
+                    <Label FontSize="16"
+                           Content="Tổng tiền bàn chính:"
+                           FontWeight="Medium"
+                           Margin="0 0 100 0"
+                           Foreground="Orange"/>
+                    <Label FontSize="16"
+                           HorizontalAlignment="Right"
+                           Content=""
+                           FontWeight="Medium"
+                           Foreground="{DynamicResource RedButton}"/>
+                </Grid>
+                <DataGrid Grid.Row="2"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          SelectionMode="Single"
+                          IsReadOnly="True"
+                          CanUserResizeColumns="False"
+                          Margin="10"
+                          AllowDrop="False"
+                          ItemsSource="{Binding hoadon2.ChiTietHoaDons, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Mặt hàng"
+                                    Binding="{Binding Mon.Name}"/>
+                        <DataGridTextColumn Header="ĐVT"
+                                    Binding="{Binding Mon.Unit.Name}"/>
+                        <DataGridTextColumn Header="Số lượng"
+                                            Width="50"
+                                            Binding="{Binding Quantity}"/>
+                        <DataGridTextColumn Header="Đơn giá"
+                                    Binding="{Binding Mon.Price}"/>
+                        <DataGridTextColumn Header="T.Tiền"
+                                    Binding="{Binding Mon.Price}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Window>

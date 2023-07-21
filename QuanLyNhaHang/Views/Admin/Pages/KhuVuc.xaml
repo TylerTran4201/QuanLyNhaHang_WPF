@@ -1,0 +1,172 @@
+﻿<Page x:Class="QuanLyNhaHang.Views.Admin.Pages.KhuVuc"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyNhaHang.Views.Admin.Pages"
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      mc:Ignorable="d" 
+      DataContext="{StaticResource KhuVucVM}"
+      d:DesignHeight="900" d:DesignWidth="1300">
+    <Grid Background="{DynamicResource PrimaryBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" BorderBrush="{DynamicResource Primary}"
+                  BorderThickness="3" Margin="20">
+            <GroupBox.Header>
+                <Border Background="{DynamicResource Primary}"
+                        Width="100"
+                        CornerRadius="2"
+                        Height="25">
+                    <TextBlock VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Text="Thông Tin"
+                               Foreground="White"/>
+                </Border>
+            </GroupBox.Header>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <TextBlock Text="Tên Khu Vực:" Margin="20 0 0 0"/>
+                    <TextBox Width="auto"
+                             Height="25"
+                             Margin="10 0"
+                             VerticalAlignment="Bottom"
+                             Text="{Binding txtName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <TextBlock Text="Chọn Màu:" Margin="20 0 0 0" Grid.ColumnSpan="2"/>
+                    <ComboBox Width="200"
+                              Height="25"
+                              Margin="10,18,0,0"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Top"
+                              ItemsSource="{Binding colors}"
+                              SelectedItem="{Binding selectedColor}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Fill="{Binding}" Width="16" Height="16" Margin="0,2,5,2" />
+                                    <TextBlock Text="{Binding}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </Grid>
+                <Button Grid.Row="2"
+                        Background="{DynamicResource Primary}"
+                        Content="Thêm"
+                        Style="{DynamicResource ButtonCustom}"
+                        Command="{Binding AddCommand}"/>
+                <Button Grid.Row="2" Grid.Column="1"
+                        Background="{DynamicResource Primary}"
+                        Content="Sửa"
+                        Style="{DynamicResource ButtonCustom}"
+                        Command="{Binding UpdateCommand}"/>
+                <Button Grid.Row="2" Grid.Column="2"
+                        Background="{DynamicResource Primary}"
+                        Content="Làm Mới"
+                        Style="{DynamicResource ButtonCustom}"
+                        Command="{Binding ClearCommand}"/>
+            </Grid>
+        </GroupBox>
+        <TextBlock Grid.Row="1"
+                   HorizontalAlignment="Center"
+                   FontSize="20"
+                   FontWeight="Medium"
+                   Foreground="{DynamicResource Secundary}"
+                   Text="Danh Sách Khu Vực"/>
+        <DataGrid Grid.Row="2"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  SelectionMode="Single"
+                  IsReadOnly="True"
+                  CanUserResizeColumns="False"
+                  Margin="10"
+                  AllowDrop="False"
+                  ItemsSource="{Binding khuVucs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonUp">
+                    <i:InvokeCommandAction Command="{Binding SelectedCommand}"
+                                           CommandParameter="{Binding Path=SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="#"
+                                    Width="80"
+                                    Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Name"
+                                    Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Màu Sắc"
+                                    Binding="{Binding Color}"/>
+                <DataGridTemplateColumn Header="Trạng Thái">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Width="100"
+                                    Style="{DynamicResource ButtonCustom}"
+                                    Background="{DynamicResource Primary}"
+                                    Command="{Binding Path=DataContext.ChangeStatusCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                    CommandParameter="{Binding Path=SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}">
+                                <Button.Content>
+                                    <Label HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               FontSize="10">
+                                        <Label.Style>
+                                            <Style TargetType="Label">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Path=Status}" Value="0">
+                                                        <Setter Property="Content" Value="Không hoạt động"/>
+                                                        <Setter Property="Foreground" Value="#F5CE3B"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Path=Status}" Value="1">
+                                                        <Setter Property="Content" Value="hoạt động"/>
+                                                        <Setter Property="Foreground" Value="#4CF4F4"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Label.Style>
+                                    </Label>
+                                </Button.Content>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Ngày Tạo"
+                                    Binding="{Binding CreatedAt}"/>
+                <DataGridTextColumn Header="Ngày Sửa"
+                                    Binding="{Binding ModifiedAt}"/>
+                <DataGridTemplateColumn Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button BorderThickness="0"
+                                    Cursor="Hand"
+                                    Background="{DynamicResource RedButton}"
+                                    Command="{Binding DataContext.DeleteCommnad, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                    CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}, Mode=FindAncestor}}">
+                                <Path Fill="WhiteSmoke"
+                                      Stretch="Fill"
+                                      Width="20"
+                                      Height="20"
+                                      Data="{DynamicResource icon_delete}"/>
+                            </Button>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

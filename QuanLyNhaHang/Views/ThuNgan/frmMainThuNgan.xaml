@@ -1,0 +1,188 @@
+﻿<Window x:Class="QuanLyNhaHang.Views.frmMainThuNgan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyNhaHang.Views"
+        xmlns:global="clr-namespace:QuanLyNhaHang.Helpers"
+        xmlns:uc="clr-namespace:QuanLyNhaHang.Views.UC"
+        mc:Ignorable="d"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        x:Name="_this"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        ResizeMode="NoResize"
+        DataContext="{StaticResource MainThuNganVM}">
+    <!--<i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding ElementName=window}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <uc:ControlBarUC/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="{DynamicResource Primary}">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding InfoUser}" Foreground="White"
+                       FontSize="15"
+                       FontWeight="Medium"
+                       Margin="10,0,0,0"/>
+                <TextBlock Grid.Row="1"
+                       Text="{Binding InfoCa}"
+                       FontWeight="Medium"
+                       FontSize="15"
+                       Margin="10,0,0,0"
+                       Foreground="Orange"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="300"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <ItemsControl Background="Transparent"
+                          Name="itemArea"
+                          BorderThickness="0"
+                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                          VerticalAlignment="Center"
+                          ItemsSource="{Binding khuVucs}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Style="{DynamicResource ThuNgan.KhuVuc.Button}"
+                                Name="btnKhuVuc"
+                                Command="{Binding ElementName=_this,Path=DataContext.SelectKhuVucCommand}"
+                                CommandParameter="{Binding ElementName=btnKhuVuc}">
+                                    <Button.Content>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Text="{Binding Name}"
+                                               FontSize="15"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Có khách:"
+                           FontWeight="Medium"/>
+                            <Label Content="{Binding coKhach}"
+                           FontWeight="Medium"/>
+                            <Label Content="/"
+                           FontWeight="Medium"/>
+                            <Label Content="{Binding tongBan}"
+                           FontWeight="Medium"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Bàn trống:"
+                           FontWeight="Medium"/>
+                            <Label Content="{Binding banTrong}"
+                           FontWeight="Medium"/>
+                            <Label Content="/"
+                           FontWeight="Medium"/>
+                            <Label Content="{Binding tongBan}"
+                           FontWeight="Medium"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2">
+                <ItemsControl Background="Transparent"
+                          Name="itemTable"
+                          BorderThickness="0"
+                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                          ItemsSource="{Binding bans,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                          HorizontalAlignment="Center">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Width="180" Height="80"
+                                Cursor="Hand"
+                                Margin="5"
+                                Name="btnBan"
+                                Command="{Binding ElementName=_this,Path=DataContext.SelectBanCommand}"
+                                CommandParameter="{Binding ElementName=btnBan}"
+                                Foreground="{Binding Path=TinhTrang.Color}"
+                                Background="{Binding Path=TinhTrang.BackgroundColor}">
+
+                                <Button.Content>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding Name}"
+                                               FontSize="15"
+                                               Foreground="White"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="500"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" VerticalAlignment="Top"
+                  Margin="0 10 0 0" Orientation="Horizontal">
+                    <Button Grid.Column="0"
+                        Style="{DynamicResource ThuNgan.ChucNang.Button}"
+                        Content="Chuyển bàn"
+                        Command="{Binding ChuyenBanCommand}"/>
+                    <Button Grid.Column="1"
+                        Style="{DynamicResource ThuNgan.ChucNang.Button}"
+                        Content="Hủy Bàn"
+                        Command="{Binding HuyBanCommand}"/>
+                    <Button Grid.Column="2"
+                        Style="{DynamicResource ThuNgan.ChucNang.Button}"
+                        Content="Gộp tách bàn"
+                        Command="{Binding GopTachBanCommand}"/>
+                    <Button Grid.Column="3"
+                        Style="{DynamicResource ThuNgan.ChucNang.Button}"
+                        Content="Chi"
+                        Command="{Binding ChiCommand}"/>
+                    <Button Grid.Column="4"
+                        Style="{DynamicResource ThuNgan.ChucNang.Button}"
+                        Content="Thu"/>
+                    <Button Grid.Column="5"
+                        Style="{DynamicResource ThuNgan.ChucNang.Button}"
+                        Content="H/Đ gần đây"/>
+                    <Button Grid.Column="6"
+                        Style="{DynamicResource ThuNgan.ChucNang.Button}"
+                        Content="Giao ca"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</Window>

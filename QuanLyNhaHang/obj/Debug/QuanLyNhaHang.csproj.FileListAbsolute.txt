@@ -1,0 +1,150 @@
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\QuanLyNhaHang.exe.config
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\QuanLyNhaHang.exe
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\QuanLyNhaHang.pdb
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\EntityFramework.dll
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\Microsoft.Expression.Interactions.dll
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\EntityFramework.xml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\Microsoft.Expression.Interactions.xml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\System.Windows.Interactivity.xml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang.csprojAssemblyReference.cache
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Assets\IconDictionary.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\CusomControl\MenuWithSubMenuControl.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Style\DatagridCustomize.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Style\ListviewCustomize.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Style\TextBoxWithPlaceHolder.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\TaiKhoan.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\Dashboard.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Style\ButtonCustomize.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\CusomControl\MenuWithSubMenuControl.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Dialogs\Alert\AlertDialogView.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Dialogs\Service\DialogWindow.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Dialogs\YesNo\YesNoDialogView.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Style\TextBoxWithPlaceHolder.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\DanhMucMonAn.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\MonAn.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\VaiTroTaiKhoan.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\VaiTro.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\TaiKhoan.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\Dashboard.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\frmMainAdmin.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\MainQuanLy.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Login.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmMainThuNgan.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\frmLogin.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\App.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang_Content.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang_MarkupCompile.cache
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang_MarkupCompile.lref
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\App.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Dialogs\Alert\AlertDialogView.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Dialogs\Service\DialogWindow.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Dialogs\YesNo\YesNoDialogView.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Theme\LightTheme.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\DanhMucMonAn.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\MonAn.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\VaiTroTaiKhoan.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\VaiTro.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\ResourceXAML\MainResource.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Theme\Maintheme.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\frmMainAdmin.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\MainQuanLy.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Login.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmMainThuNgan.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\frmLogin.baml
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang.g.resources
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang.Properties.Resources.resources
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang.csproj.GenerateResource.cache
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang.csproj.CoreCompileInputs.cache
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang.csproj.CopyComplete
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang.exe
+C:\Users\TylerTran\Desktop\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang.pdb
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang.csprojAssemblyReference.cache
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Assets\IconDictionary.baml
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\CusomControl\MenuWithSubMenuControl.baml
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Style\DatagridCustomize.baml
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Style\ListviewCustomize.baml
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Style\TextBoxWithPlaceHolder.baml
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\TaiKhoan.baml
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\Dashboard.baml
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Style\ButtonCustomize.baml
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\CusomControl\MenuWithSubMenuControl.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Dialogs\Alert\AlertDialogView.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Dialogs\Service\DialogWindow.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Dialogs\YesNo\YesNoDialogView.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Style\TextBoxWithPlaceHolder.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\Ban.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\DanhMucMonAn.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\KhuVuc.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\LoaiBan.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\MonAn.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\VaiTroTaiKhoan.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\VaiTro.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\TaiKhoan.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\Dashboard.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\frmMainAdmin.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\MainQuanLy.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Login.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmChi.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmChuyenBan.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmDatBan.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmGopTachBan.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmGopTachBan_NhapSoLuong.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmHuyBan.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmMainThuNgan.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmThanhToanHoaDon.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\App.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang_Content.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang_MarkupCompile.cache
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang_MarkupCompile.lref
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\QuanLyNhaHang.exe.config
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\QuanLyNhaHang.exe
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\QuanLyNhaHang.pdb
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\EntityFramework.dll
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\EntityFramework.SqlServer.dll
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\Microsoft.Expression.Interactions.dll
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\System.Windows.Interactivity.dll
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\EntityFramework.xml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\EntityFramework.SqlServer.xml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\Microsoft.Expression.Interactions.xml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\System.Windows.Interactivity.xml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\App.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Dialogs\Alert\AlertDialogView.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Dialogs\Service\DialogWindow.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Dialogs\YesNo\YesNoDialogView.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Theme\LightTheme.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\Ban.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\DanhMucMonAn.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\KhuVuc.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\LoaiBan.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\MonAn.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\VaiTroTaiKhoan.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\VaiTro.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\ResourceXAML\MainResource.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Theme\Maintheme.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\frmMainAdmin.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Admin\Pages\MainQuanLy.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\Login.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmChi.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmChuyenBan.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmDatBan.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmGopTachBan.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmGopTachBan_NhapSoLuong.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmHuyBan.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmMainThuNgan.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmThanhToanHoaDon.baml
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang.g.resources
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang.Properties.Resources.resources
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang.csproj.GenerateResource.cache
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang.csproj.CoreCompileInputs.cache
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang.csproj.CopyComplete
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang.exe
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\QuanLyNhaHang.pdb
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmManHinhGiamSat.g.cs
+E:\Workspace\Phần mềm Quản Lý Nhà Hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\ThuNgan\frmManHinhGiamSat.baml
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\UC\ControlBarUC.baml
+E:\Workspace\Phần mềm quản lý nhà hàng\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\Views\UC\ControlBarUC.g.cs
